@@ -1,0 +1,14 @@
+/* font import */
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@100;400;600;700&family=Dosis:wght@200;400;700&family=Merriweather:ital,wght@0,300;0,400;1,900&display=swap');
+/**
+font-family: 'Antonio', sans-serif;
+font-family: 'Dosis', sans-serif;
+font-family: 'Merriweather', serif;
+ */
+
+h1 {
+    background-color: aqua;
+    padding: 1em;
+    font-family: 'Antonio', sans-serif;
+    font-weight: 400;
+}
