@@ -6,6 +6,10 @@ const links = [
     {
         label: "Drum Kit",
         url: "Javascript-DrumKit/drumKit.html"
+    },
+    {
+        label: "CSS + JS Clock",
+        url: "JS+CS- Clock"
     }
 ]
 
