@@ -10,6 +10,10 @@ const links = [
     {
         label: "CSS + JS Clock",
         url: "JS+CS-Clock/clock.html"
+    },
+    {
+        label: "CSS - Variables",
+        url: "CSS-Variables/CSSVariables.html"
     }
 ]
 
