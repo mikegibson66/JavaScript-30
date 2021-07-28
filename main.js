@@ -9,7 +9,7 @@ const links = [
     },
     {
         label: "CSS + JS Clock",
-        url: "JS+CS- Clock"
+        url: "JS+CS-Clock/clock.html"
     }
 ]
 
