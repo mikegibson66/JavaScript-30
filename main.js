@@ -17,7 +17,7 @@ const links = [
     },
     {
         label: "Array Cardio - One",
-        url: "ArrayCar1/ArrayCard1.html"
+        url: "ArrayCard-1/ArrayCard1.html"
     }
 ]
 
