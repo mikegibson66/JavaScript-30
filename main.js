@@ -14,6 +14,10 @@ const links = [
     {
         label: "CSS - Variables",
         url: "CSS-Variables/CSSVariables.html"
+    },
+    {
+        label: "Array Cardio - One",
+        url: "ArrayCar1/ArrayCard1.html"
     }
 ]
 
