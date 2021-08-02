@@ -22,6 +22,10 @@ const links = [
     {
         label: "Flex Gallery - CSS",
         url: "FlexPanelGallery/FlexGallery.html"
+    },
+    {
+        label: "Predictive Type Ahead",
+        url: "typeAhead/typeAhead.html"
     }
 ]
 
