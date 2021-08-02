@@ -18,6 +18,10 @@ const links = [
     {
         label: "Array Cardio - One",
         url: "ArrayCard-1/ArrayCard1.html"
+    },
+    {
+        label: "Flex Gallery - CSS",
+        url: "FlexPanelGallery/FlexGallery.html"
     }
 ]
 
