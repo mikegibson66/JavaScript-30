@@ -26,6 +26,10 @@ const links = [
     {
         label: "Predictive Type Ahead",
         url: "typeAhead/typeAhead.html"
+    },
+    {
+        label: "Drawing on Canvas",
+        url: "HTML5Canvas/htmlFiveCanvas.html"
     }
 ]
 

@@ -38,8 +38,22 @@ const boulevardsParis = [
     'Boulevard du Montparnasse', 'Boulevard Raspail', 'Boulevard Richard-Lenoir', 'Boulevard Saint-Germain',
     'Boulevard Saint-Michel',  'Boulevard de Sébastopol', 'Boulevard de Strasbourg', 'Boulevard du Temple', 'Boulevard Auguste-Blanqui',
     'Boulevard Voltaire', 'Boulevard de la Zone'
-]
+];
 
+const persons = [
+    { name: 'Wes', year: 1988 },
+    { name: 'Kait', year: 1986 },
+    { name: 'Irv', year: 1970 },
+    { name: 'Lux', year: 2015 }
+];
+
+const comments = [
+    { text: 'Love this!', id: 523423 },
+    { text: 'Super good', id: 823423 },
+    { text: 'You are the best', id: 2039842 },
+    { text: 'Ramen is my fav food ever', id: 123523 },
+    { text: 'Nice Nice Nice!', id: 542328 }
+];
 /**
  * Buttons
  */
@@ -47,7 +61,7 @@ const buttons = {
     listInventors: document.getElementById('listInventors'),
     listPeople: document.getElementById('listPeople'),
     listRawData: document.getElementById('listData'),
-    // listPeopleTwo: document.getElementById('listPeople2'),
+    listPeopleTwo: document.getElementById('listPeople2'),
     paris: document.getElementById('parisBoulevard'),
     clear: document.getElementById('clearData'),
     born15hundred: document.getElementById('birth'),
@@ -133,7 +147,51 @@ const transport = data.reduce((object, item) => {
     return object;
 }, {})
 
-console.log(typeof transport);
+// Some and Every Checks
+// Array.prototype.some() // is at least one person 19 or older?
+const someAdults = persons.some((person) => (new Date()).getFullYear() - person.year >= 19);
+
+console.log({someAdults});
+
+function ageCheck(arr) {
+    const currentYear = (new Date()).getFullYear();
+    const greaterNineteen = (element) => currentYear - element.year >= 19;
+    return arr.some(greaterNineteen) ? displayGreater(arr, currentYear) : '<ul><li>nope</li></ul>';
+}
+
+function displayGreater(array, year) {
+    let display = '<ul> The following persons are older than 19:<br>';
+    for (let i = 0, max = array.length; i < max; i++) {
+        if(year - array[i].year >= 19) {
+            display += `<li>${array[i].name}, born ${array[i].year}</li>`;
+        }
+    }
+    display += '</ul>';
+    return display;
+}
+
+// Array.prototype.every() // is everyone 19 or older?
+const allAdults = persons.every((person) => (new Date()).getFullYear() - person.year >= 19);
+console.log({allAdults});
+
+// Array.prototype.find()
+// Find is like filter, but instead returns just the one you are looking for
+// find the comment with the ID of 823423
+const comment = comments.find((com) => com.id === 823423);
+console.log(`Comment with id ${comment.id} is "${comment.text}"`);
+
+// Array.prototype.findIndex()
+// Find the comment with this ID
+// delete the comment with the ID of 823423
+const arrayIndex = comments.findIndex((com) => com.id === 823423);
+console.log(arrayIndex);
+console.table(comments);
+const newComments = [
+    ...comments.slice(0, arrayIndex),
+    ...comments.slice(arrayIndex + 1)
+];
+console.table(newComments)
+
 /**
  * Display Functions
  */
@@ -184,16 +242,36 @@ function displayArray(arrayName, location) {
     }
 
     display += '</ol>';
-    console.log(display);
     document.getElementById(location).innerHTML = display;
 }
 
+function display(array, location) {
+    let display = '<ol>';
+    for (let i = 0, max = array.length; i < max; i++) {
+        let keys = Object.keys(array[i]);
+        display += '<li>';
+        for(let j = 0, maxOb = keys.length; j < maxOb; j++) {
+            display += `${array[i][keys[j]]}`;
+            if(j < maxOb - 1) {
+                display += `, ${keys[j + 1]}: `
+            }
+        }
+        display += '</li>';
+    }
+    display += '</ol>';
+    document.getElementById(location).innerHTML = display;
+}
+
+function displaySingleEntity(context, location) {
+    document.getElementById(location).innerHTML = context;
+}
 /**
  * Event listeners for buttons
  */
 buttons.listInventors.addEventListener('click', () => displayList(inventors, 'list'));
 buttons.listPeople.addEventListener('click', () => displayList(people, 'list'));
 buttons.listRawData.addEventListener('click', () => displayList(data, 'list'));
+buttons.listPeopleTwo.addEventListener('click', () => display(persons, 'list'));
 buttons.paris.addEventListener('click', () => displayList(boulevardsParis, 'list'));
 buttons.clear.addEventListener('click', () => {
    document.getElementById('list').innerHTML = '';
@@ -211,6 +289,7 @@ buttons.clearSort.addEventListener('click', () => {
 buttons.reverseSort.addEventListener('click', () => displayList(alpha, 'sortReduce'));
 buttons.deStreet.addEventListener('click', () => displayList(de, 'sortReduce'));
 buttons.sumTrans.addEventListener('click', () => displayArray(transport, 'sortReduce'));
+buttons.greaterNineteen.addEventListener('click', () => displaySingleEntity(ageCheck(persons),'sortReduce'));
 buttons.clearReduce.addEventListener('click', () => {
     document.getElementById('sortReduce').innerHTML = '';
 });
